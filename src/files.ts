@@ -1,7 +1,7 @@
 import fs from "fs";
 import path from "path";
 export const getAllFiles = (folderPath: string) => {
-  let response: string[] = [];
+  let response: any[] = [];
   const allFiles = fs.readdirSync(folderPath);
   allFiles.forEach((file) => {
     const fullFilePath = path.join(folderPath, file);
