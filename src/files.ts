@@ -1,7 +1,10 @@
+
+
 import fs from "fs";
 import path from "path";
+import { uploadFiles } from "./aws";
 export const getAllFiles = (folderPath: string) => {
-  let response: any[] = [];
+  let response: string[] = [];
   const allFiles = fs.readdirSync(folderPath);
   allFiles.forEach((file) => {
     const fullFilePath = path.join(folderPath, file);
@@ -15,4 +18,5 @@ export const getAllFiles = (folderPath: string) => {
   return response;
 };
 
-getAllFiles(`./build/output/jj14k`);
+// getAllFiles(`./build/output/jj14k`);
+

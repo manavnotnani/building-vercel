@@ -17,15 +17,23 @@ const cors_1 = __importDefault(require("cors"));
 const simple_git_1 = __importDefault(require("simple-git"));
 const utils_1 = require("./utils");
 const path_1 = __importDefault(require("path"));
+const files_1 = require("./files");
+const aws_1 = require("./aws");
+const redis_1 = require("redis");
+const publisher = (0, redis_1.createClient)();
+publisher.connect();
 const app = (0, express_1.default)();
 app.use((0, cors_1.default)());
 app.use(express_1.default.json());
-console.log('path.join(__dirname, `output/${id}`', path_1.default.join(__dirname, `output/random`));
 app.post("/deploy", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const repoUrl = req.body.url;
     const id = (0, utils_1.generateRandom)();
     yield (0, simple_git_1.default)().clone(repoUrl, path_1.default.join(__dirname, `output/${id}`));
-    console.log("repoUrl", repoUrl);
+    const files = (0, files_1.getAllFiles)(path_1.default.join(__dirname, `output/${id}`));
+    files.forEach((file) => __awaiter(void 0, void 0, void 0, function* () {
+        yield (0, aws_1.uploadFiles)(file.slice(__dirname.length + 1), file);
+    }));
+    publisher.lPush("new-queue", id);
     res.json({
         id: id,
     });

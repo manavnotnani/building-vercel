@@ -22,4 +22,4 @@ const getAllFiles = (folderPath) => {
     return response;
 };
 exports.getAllFiles = getAllFiles;
-(0, exports.getAllFiles)(`./build/output/jj14k`);
+// getAllFiles(`./build/output/jj14k`);
