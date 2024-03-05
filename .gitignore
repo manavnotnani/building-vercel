@@ -1,0 +1,8 @@
+build
+node_modules
+.env.dev
+.env.qa
+.env
+*.sh
+package-lock.json
+.scannerwork
