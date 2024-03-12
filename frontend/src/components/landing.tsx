@@ -68,7 +68,7 @@ export function Landing() {
               className="w-full"
               type="submit"
             >
-              {uploadId ? `Deploying (${uploadId})`: uploading? "Uploading...": "Upload"}
+              {uploadId ? `Deploying (${uploadId})`: uploading? "Uploading.....": "Upload"}
             </Button>
           </div>
         </CardContent>
@@ -76,7 +76,7 @@ export function Landing() {
       {deployed && (
         <Card className="w-full max-w-md mt-8">
           <CardHeader>
-            <CardTitle className="text-xl">Deployment Status</CardTitle>
+            <CardTitle className="text-xl">Deployment    Status</CardTitle>
             <CardDescription>
               Your website is successfully deployed!
             </CardDescription>
